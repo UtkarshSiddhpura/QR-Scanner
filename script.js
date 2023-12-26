@@ -1,5 +1,6 @@
 function onScanSuccess(decodedText, decodedResult) {
 	console.log(`Scan result: ${decodedText}`, decodedResult);
+	document.getElementById("scanResultText").textContent = `PassID,UserID: ${decodedText}`;
 	html5QrcodeScanner.clear();
 
 	document.getElementById("refreshButton").style.display = "block";
