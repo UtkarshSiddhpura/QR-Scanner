@@ -12,8 +12,9 @@ function refreshScanner() {
 	renderQrScanner();
 }
 
+let html5QrcodeScanner;
 function renderQrScanner() {
-	const html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+	html5QrcodeScanner = new Html5QrcodeScanner("reader", {
 		fps: 10,
 		qrbox: 250,
 	});
