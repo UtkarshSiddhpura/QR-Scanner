@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Frank GP — Android Developer</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f8f8f8;
+				min-height: 100vh;
+			}
+			#container {
+				padding: 20px;
+				border-radius: 10px;
+				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+			}
+
+			button,
+			.btn {
+				margin-top: 10px;
+				background-color: #007bff;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				cursor: pointer;
+				border-radius: 5px;
+				text-decoration: none;
+			}
+			#refreshButton {
+				display: block;
+			}
+			#reader {
+				width: 95vw;
+				max-width: 900px;
+				border-radius: 10px;
+				border-width: 3px;
+				overflow: hidden;
+			}
+			.html5-qrcode-element {
+				margin-bottom: 10px;
+			}
+			.html5-qrcode-anchor-scan-type-change,
+			.Infoicon {
+				display: none;
+			}
+			#reader > div:nth-child(1) > img {
+				display: none;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+		</style>
+		<script src="https://unpkg.com/html5-qrcode" defer></script>
+		<script src="./script.js" defer></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="reader"></div>
+			<h2 id="scanResultText"></h2>
+			<button id="refreshButton" onclick="refreshScanner()">New Scan</button>
+		</div>
+	</body>
+</html>
