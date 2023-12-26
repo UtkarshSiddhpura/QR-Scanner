@@ -1,18 +1,22 @@
 function onScanSuccess(decodedText, decodedResult) {
 	console.log(`Scan result: ${decodedText}`, decodedResult);
-	document.getElementById("scanResultText").textContent = `PassID,UserID: ${decodedText}`;
+	document.getElementById(
+		"scanResultText"
+	).textContent = `PassID,UserID: ${decodedText}`;
 	html5QrcodeScanner.clear();
-
 	document.getElementById("refreshButton").style.display = "block";
 }
 
 function refreshScanner() {
-	location.reload(true);
+	document.getElementById("refreshButton").style.display = "none";
+	renderQrScanner();
 }
 
-var html5QrcodeScanner = new Html5QrcodeScanner("reader", {
-	fps: 10,
-	qrbox: 250,
-});
-
-html5QrcodeScanner.render(onScanSuccess);
+function renderQrScanner() {
+	const html5QrcodeScanner = new Html5QrcodeScanner("reader", {
+		fps: 10,
+		qrbox: 250,
+	});
+	html5QrcodeScanner.render(onScanSuccess);
+}
+renderQrScanner();
