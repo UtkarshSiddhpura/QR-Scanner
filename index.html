@@ -14,6 +14,8 @@
 				font-family: Arial, sans-serif;
 				background-color: #f8f8f8;
 				min-height: 100vh;
+				display: grid;
+				place-content: center;
 			}
 			#container {
 				padding: 20px;
@@ -36,9 +38,6 @@
 				border-radius: 5px;
 				text-decoration: none;
 			}
-			#refreshButton {
-				display: none;
-			}
 			#reader {
 				width: 95vw;
 				max-width: 900px;
@@ -55,23 +54,118 @@
 			#reader > div:nth-child(1) > img {
 				display: none;
 			}
-			#scanResultText {
-				word-break: break-all;
-				padding: 1rem;
-			}
 
 			button:hover {
 				background-color: #0056b3;
 			}
+
+			/* Card Styles */
+			.profile {
+				max-width: 180px;
+				border-radius: 20px;
+				border: 2px solid var(--clr-main);
+			}
+			.card-container {
+				--clr-bg: rgb(240 253 244);
+				--clr-main: rgb(22 101 52);
+				padding: 1rem;
+				border-radius: 0.375rem;
+				background-color: var(--clr-bg);
+				width: min(90vw, 500px);
+				height: auto;
+				font-size: 0.875rem;
+				line-height: 1.25rem;
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			.card-container.error {
+				--clr-bg: rgb(253, 240, 242);
+				--clr-main: rgb(176, 24, 31);
+			}
+			.card-heading {
+				font-weight: bold;
+				color: var(--clr-main);
+			}
+
+			.card-content {
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+				margin-top: 0.5rem;
+				color: #292929;
+			}
+
+			.card-btn {
+				display: flex;
+				justify-content: space-evenly;
+				margin-top: 0.875rem;
+				margin-bottom: -0.375rem;
+				margin-left: -0.5rem;
+				margin-right: -0.5rem;
+			}
+			button {
+				border: 2px solid var(--clr-main);
+			}
+			button:active {
+				transform: scale(0.98);
+			}
+
+			.button-main {
+				padding-top: 0.375rem;
+				padding-bottom: 0.375rem;
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+				background-color: var(--clr-bg);
+				color: var(--clr-main);
+				font-size: 0.875rem;
+				line-height: 1.25rem;
+				font-weight: bold;
+				border-radius: 0.375rem;
+			}
+
+			.button-main:hover {
+				background-color: #ecfdf5;
+			}
+			.hidden {
+				display: none;
+			}
 		</style>
 		<script src="https://unpkg.com/html5-qrcode" defer></script>
-		<script src="./script.js" defer></script>
+		<script src="./script.js" type="module"></script>
 	</head>
 	<body>
 		<div id="container">
 			<div id="reader"></div>
-			<h2 id="scanResultText"></h2>
-			<button id="refreshButton" onclick="refreshScanner()">New Scan</button>
+			<div id="scanResult" class="card-container hidden">
+				<h3 id="heading" class="card-heading">Valid Pass!</h3>
+				<div class="card-content">
+					<div style="text-align: center">
+						<img class="profile" id="profile" src="" alt="profile img" />
+					</div>
+					<h2>
+						<span>Name: </span
+						><span style="font-weight: normal" id="name"></span>
+					</h2>
+					<h2>
+						<span>Mobile no: </span
+						><span style="font-weight: normal" id="phone"></span>
+					</h2>
+					<h2>
+						<span>Route: </span
+						><span style="font-weight: normal" id="route"></span>
+					</h2>
+					<h2>
+						<span>Valid Upto: </span
+						><span style="font-weight: normal" id="validity"></span>
+					</h2>
+				</div>
+				<div class="card-btn">
+					<button class="button-main" type="button" id="refreshButton">
+						New Scan
+					</button>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
