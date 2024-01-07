@@ -52,7 +52,7 @@ function renderPass(data) {
 	route.textContent = pass.placeFrom + " - " + pass.placeTo;
 	validity.textContent = dateTo.toLocaleDateString();
 
-	if (dateTo < new Date("2024-01-29")) {
+	if (dateTo < new Date()) {
 		resultCont.classList.add("error");
 		heading.textContent = "Expired Pass, Please Renew !";
 		return;
@@ -66,8 +66,8 @@ async function onScanSuccess(decodedText, decodedResult) {
 		heading.textContent = "Invalid QR !";
 	} else {
 		const data = await getUserData(
-			"H13JaGEBI6a3EUQ87s0bzUfxVOS2",
-			"Yxb2lcc6f4M42iv9DaUi"
+			userID,
+			passID
 		);
 		renderPass(data);
 	}
